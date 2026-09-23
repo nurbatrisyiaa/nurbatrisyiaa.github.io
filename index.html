@@ -51,13 +51,13 @@
         .glow-effect {
             box-shadow: 0 0 25px -5px rgba(14, 165, 233, 0.3);
         }
-       .gradient-text {
-    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
         
         /* Custom Notification Toast */
         #toast {
@@ -425,17 +425,19 @@
 
                     <!-- Contact Form -->
                     <form id="contact-form" class="glass-card p-6 rounded-2xl space-y-4">
+                        <input type="hidden" name="access_key" value="23ea143d-0180-4dc4-830f-f6568d59360c">
+                        
                         <div>
                             <label for="name" class="block text-xs font-medium text-slate-300 mb-1">Company / Recruiter Name</label>
-                            <input type="text" id="name" required class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="e.g. HR Department">
+                            <input type="text" id="name" name="name" required class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="e.g. HR Department">
                         </div>
                         <div>
                             <label for="email" class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
-                            <input type="email" id="email" required class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="hr@company.com">
+                            <input type="email" id="email" name="email" required class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="hr@company.com">
                         </div>
                         <div>
                             <label for="message" class="block text-xs font-medium text-slate-300 mb-1">Message (Internship Details)</label>
-                            <textarea id="message" rows="4" required class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="Hi Nur Batrisyia, we would like to invite you for an internship interview..."></textarea>
+                            <textarea id="message" name="message" rows="4" required class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-4 py-2.5 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="Hi Nur Batrisyia, we would like to invite you for an internship interview..."></textarea>
                         </div>
                         <button type="submit" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm transition-all duration-200 shadow-lg">
                             Send Message
@@ -491,8 +493,8 @@
             showToast("Copied: " + textToCopy);
         }
 
-        // Handle contact form submission
-       document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        // Handle contact form submission asynchronously via Web3Forms API
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const formData = new FormData(this);
